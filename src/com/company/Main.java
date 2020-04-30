@@ -9,24 +9,16 @@ public class Main {
         System.out.println("ArrayList created");
     ConcurrentMap map = new ConcurrentMap();
         System.out.println("ConcurrentMap created");
-    ProcessThread process = new ProcessThread(map, list);
+    ProcessThread process = new ProcessThread("ProcessThread",map, list);
         System.out.println("ProcessThread created");
-        process.run();
-        for(int count = 0; count < 10; count++)
+
+        for(Integer count = 1; count <= 10; count++)
         {
-            RegularThread regThread = new RegularThread(count, map);
+            RegularThread regThread = new RegularThread(count.toString(),count, map);
             System.out.println("Thread " + count +" created");
-            regThread.run();
+            regThread.start();
             list.Set(regThread);
-
         }
-//        for (RegularThread regThread: list.GetIterator() )
-//        {
-//            regThread.run();
-//        }
-
-
-
-
+        process.start();
     }
 }

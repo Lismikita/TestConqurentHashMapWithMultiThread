@@ -11,11 +11,23 @@ public class ConcurrentMap {
         this.list.put(val, val);
     }
 
+    public boolean contains(long key){
+        return list.containsKey(key);
+    }
+
     public long Get(long count)
     {
-        if (this.list.containsKey(count)){
-        return this.list.get(count);}
-        return 0;
+        return this.list.get(count);
+    }
+
+    public String delByID(long key)
+    {
+        if(list.containsKey(key))
+        {
+            list.remove(key);
+            return "Del OK";
+        }
+        return "No key in list";
     }
 
 
