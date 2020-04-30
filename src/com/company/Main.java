@@ -11,13 +11,20 @@ public class Main {
         System.out.println("ConcurrentMap created");
     ProcessThread process = new ProcessThread(map, list);
         System.out.println("ProcessThread created");
+        process.run();
         for(int count = 0; count < 10; count++)
         {
             RegularThread regThread = new RegularThread(count, map);
             System.out.println("Thread " + count +" created");
+            regThread.run();
             list.Set(regThread);
+
         }
-        process.Run();
+//        for (RegularThread regThread: list.GetIterator() )
+//        {
+//            regThread.run();
+//        }
+
 
 
 

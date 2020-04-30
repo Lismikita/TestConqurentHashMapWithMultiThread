@@ -1,5 +1,7 @@
 package com.company;
 
+import static java.lang.System.*;
+
 public class RegularThread extends  Thread{
     private ConcurrentMap map;
     private int id;
@@ -7,19 +9,21 @@ public class RegularThread extends  Thread{
         this.id = id;
         this.map = map;
     }
-    public void Run() {
+    public void run() {
+        out.println("Thread has been started" + id);
         while (true)
         {
+            out.println(map.Get(id));
 
-                map.Get(id);
-                System.out.println("Regular Thread " + this.id+" get in map");
-            try{
+        try{
                 Thread.sleep(100);
             }
             catch(InterruptedException e){
-                System.out.println("Thread has been interrupted");
+                out.println("Thread has been interrupted");
             }
+        }
+
         }
     }
 
-}
+
